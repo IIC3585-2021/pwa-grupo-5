@@ -23,7 +23,9 @@ window.addEventListener('online', () => updateProfile());
 
 async function updateProfile() {
   profile.innerHTML = '';
-  const response = await fetch(`http://localhost:3000/profile/${user.id}`);
+  // const response = await fetch(`http://localhost:3000/profile/${user.id}`);
+  const response = await fetch(`https://server-web-avanzado.free.beeceptor.com/profile/id=3`);
+  console.log(response)
   const json = await response.json();
   profile.innerHTML =
     createProfile(json)

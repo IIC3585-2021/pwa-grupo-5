@@ -11,19 +11,19 @@ async function publish() {
     const message = document.getElementById('message').value;
     console.log(publisher, message);
 
-    await fetch("http://localhost:3000/pweets/", {
-    method: "POST",
-    body: JSON.stringify({
-        email: publisher,
-        pweet: message,
-    }),
+//     await fetch("http://localhost:3000/pweets/", {
+//     method: "POST",
+//     body: JSON.stringify({
+//         email: publisher,
+//         pweet: message,
+//     }),
       
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-})
-.then(response => response.json())
-.then(json => console.log(json));
+//     headers: {
+//         "Content-type": "application/json; charset=UTF-8"
+//     }
+// })
+// .then(response => response.json())
+// .then(json => console.log(json));
 
   }
 
@@ -49,10 +49,11 @@ window.addEventListener('online', () => updatePweets());
 
 async function updatePweets() {
   feed.innerHTML = '';
-  const response = await fetch(`http://localhost:3000/pweets/`);
+  const response = await fetch(`https://server-web-avanzado.free.beeceptor.com/pweets`);
   const json = await response.json();
+  console.log(json);
   feed.innerHTML =
-    json.map(createPweet).join('\n');
+    json.pweets.map(createPweet).join('\n');
 }
 
 function createPweet(pweet) {
