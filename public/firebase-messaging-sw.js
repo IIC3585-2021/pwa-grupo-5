@@ -4,6 +4,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.5.0/firebase-messaging.js');
 var firebaseConfig = {
     apiKey: "AIzaSyBUiHpINxie7OV1Rx_wfFybKtBoyJV-N8g",
     authDomain: "pwitter-19436.firebaseapp.com",
+    databaseURL: "https://pwitter-19436-default-rtdb.firebaseio.com/",
     projectId: "pwitter-19436",
     storageBucket: "pwitter-19436.appspot.com",
     messagingSenderId: "1089970872567",
