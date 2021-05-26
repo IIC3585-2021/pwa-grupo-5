@@ -4,11 +4,7 @@ const profile = document.querySelector('main');
 //const user = window.localStorage.getItem('user');
 
 if ('serviceWorker' in navigator) {
-  caches.keys().then(function(cacheNames) {
-    cacheNames.forEach(function(cacheName) {
-      caches.delete(cacheName);
-    });
-  });
+
   window.addEventListener('load', () =>
     navigator.serviceWorker.register('service-worker.js')
       .then(registration => console.log('Service Worker registered'))
