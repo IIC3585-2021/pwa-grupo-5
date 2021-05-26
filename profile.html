@@ -30,6 +30,8 @@
             </div>
         </div>
       </div>
+    
+    
         
   <!-- <script>
     if ("serviceWorker" in navigator) {
@@ -39,7 +41,15 @@
         console.log("Service worker failed", e)
       })
     }
-  </script> -->
+  </script> 
+
+  <script>
+          if('serviceWorker' in navigator) {
+              navigator.serviceWorker.register('./service-worker.js');
+          };
+      </script>-->
+    
   <script src="main.js"></script>
+  <script src="profile.js"></script>
   </body>
 </html>
