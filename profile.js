@@ -44,7 +44,7 @@ function createProfile(info) {
 
 function createPweet(pweet) {
   return `
-    <div class="pweet">
+    <div class="pweet-card">
         <p>${pweet.body}</p>
     </div>
   `;

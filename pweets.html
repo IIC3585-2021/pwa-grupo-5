@@ -5,7 +5,7 @@
     <title>Pwitter - Home</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width" />
-    <!-- <link rel="manifest" href="/manifest.json" /> -->
+    <link rel="manifest" href="/manifest.json" />
     <!-- <link rel="apple-touch-icon" href="images/pwa-icon-256.png" /> -->
     <meta name="theme-color" content="white" />
   </head>
@@ -18,11 +18,16 @@
                 <a class="btn-navbar" id="logout" href="signin.html" role="button">Log Out</a>
             </span>
         </div>
+
         <div class="container-home">
-            <h3>My Pweets</h3>
-            <div class="pweet-card">pweet 1</div>
-            <div class="pweet-card">pweet 2</div>
-            <div class="pweet-card">pweet 3</div>
+          <div class="card-pweet"> <input id="publisher" class="sign-input" placeholder="email"></div> 
+          <div class="card-pweet"> <input id="message" class="sign-input" placeholder="Tell the world..."></div> 
+          <div class="card-pweet"> <button  id="publish" class="sign">Publish</button></div> 
+
+           
+ 
+            <h3>Explore Pweets</h3>
+            <main></main>
         </div>
       </div>
         
@@ -35,6 +40,6 @@
       })
     }
   </script> -->
-  <script src="main.js"></script>
+  <script src="pweets.js"></script>
   </body>
 </html>
