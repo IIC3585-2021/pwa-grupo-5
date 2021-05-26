@@ -1,13 +1,7 @@
 const profile = document.querySelector('main');
 const user = {"id":3,"name":"Jose","email":"jfernandez7@uc.cl"}
-//const user = window.localStorage.getItem('user');
 
 if ('serviceWorker' in navigator) {
-  caches.keys().then(function(cacheNames) {
-    cacheNames.forEach(function(cacheName) {
-      caches.delete(cacheName);
-    });
-  });
   window.addEventListener('load', () =>
     navigator.serviceWorker.register('service-worker.js')
       .then(registration => console.log('Service Worker registered'))
@@ -23,8 +17,8 @@ window.addEventListener('online', () => updateProfile());
 
 async function updateProfile() {
   profile.innerHTML = '';
-  // const response = await fetch(`http://localhost:3000/profile/${user.id}`);
-  const response = await fetch(`https://server-web-avanzado.free.beeceptor.com/profile/id=3`);
+  const response = await fetch(`http://localhost:3000/profile/${user.id}`);
+  //const response = await fetch(`https://server-web-avanzado.free.beeceptor.com/profile/id=3`);
   console.log(response)
   const json = await response.json();
   profile.innerHTML =
