@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Welcome to Pwitter</title>
+    <title>Sign Up - Pwitter</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width" />
     <!-- <link rel="manifest" href="/manifest.json" /> -->
@@ -12,14 +12,17 @@
   <body>
       <div class="container">
           <div id="welcome">
-              <h1>Bienvenidos a Pwitter</h1>
+              <h1>Sign Up</h1>
           </div>
-          <div class="options">
-            <a class="sign" id="left" href="signup.html" role="button">Sign Up</a>
-            <a class="sign" href="signin.html" role="button">Sign In</a>
+          <div class="form">
+            <input class="sign-input" id="email" placeholder="Email">
+            <input class="sign-input" type="password" id="password" placeholder="Password">
+            <!-- <button class="submit" id="signup">Sign Up</button> -->
+            <button class="submit" id="signup">Sign Up</button>
+          </div>
           </div>
       </div>
-  <script>
+  <!-- <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
         console.log("Fue registrado con scope: ", registration.scope)
@@ -27,7 +30,7 @@
         console.log("Service worker failed", e)
       })
     }
-  </script>
-  <script src="main.js"></script>
+  </script> -->
+  <script src="/js/signup.js"></script>
   </body>
 </html>
