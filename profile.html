@@ -1,55 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Pwitter - My Profile</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <meta name="viewport" content="width=device-width" />
-    <!-- <link rel="manifest" href="/manifest.json" /> -->
-    <!-- <link rel="apple-touch-icon" href="images/pwa-icon-256.png" /> -->
-    <meta name="theme-color" content="white" />
-  </head>
-  <body>
-      <div class="window-container">
-        <div class="navbar">
-            <span class="title">MY PROFILE</span>
-            <span class="buttons-navbar">
-                <a class="btn-navbar" id="home" href="pweets.html" role="button">Home</a>
-                <a class="btn-navbar" id="logout" href="signin.html" role="button">Log Out</a>
-            </span>
-        </div>
-        <div class="container-home">
-            <div class="profile">
-                <img alt="profile picture" src="images/profile.png">
-            </div>
-            <div class="my-pweets">
-                <h3>My Pweets</h3>
-                <div class="pweet-card">pweet 1</div>
-                <div class="pweet-card">pweet 2</div>
-                <div class="pweet-card">pweet 3</div>
-            </div>
-        </div>
-      </div>
-    
-    
-        
-  <!-- <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
-        console.log("Fue registrado con scope: ", registration.scope)
-      }).catch((e) => {
-        console.log("Service worker failed", e)
-      })
-    }
-  </script> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="manifest" href="./manifest.json" crossorigin="use-credentials">
+    <link rel='stylesheet' href='./style.css'>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js');
+        };
+    </script>
+</head>
+<body>
+    <nav>
+        <a href='index.html'>Home</a>
+        <a href='profile.html' class='selected'>Profile</a>
+    </nav>
+    <main>
+        You're viewing about page.
+    </main>
+</body>
+<script src="profile.js"></script>
 
-  <script>
-          if('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('./service-worker.js');
-          };
-      </script>-->
-    
-  <script src="main.js"></script>
-  <script src="profile.js"></script>
-  </body>
 </html>
