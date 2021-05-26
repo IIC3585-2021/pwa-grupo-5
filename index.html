@@ -1,31 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
-    <link rel='stylesheet' href='./style.css'>
-    <link rel="shortcut icon" href="data:images/x-icon;," type="images/x-icon">
-    <script>
-        if('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js');
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Pwitter</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="manifest" href="/manifest.json" /> -->
+    <!-- <link rel="apple-touch-icon" href="images/pwa-icon-256.png" /> -->
+    <meta name="theme-color" content="white" />
+  </head>
+  <body>
+      <div class="container">
+          <div id="welcome">
+              <h1>Bienvenidos a Pwitter</h1>
+          </div>
+          <div class="options">
+            <a class="sign" id="left" href="signup.html" role="button">Sign Up</a>
+            <a class="sign" href="signin.html" role="button">Sign In</a>
+          </div>
+      </div>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-messaging.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./firebase-messaging-sw.js").then((registration) => {
+        console.log("Fue registrado con scope: ", registration.scope)
+      }).catch((e) => {
+        console.log("Service worker failed", e)
+      })
+    }
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyBUiHpINxie7OV1Rx_wfFybKtBoyJV-N8g",
+        authDomain: "pwitter-19436.firebaseapp.com",
+        projectId: "pwitter-19436",
+        storageBucket: "pwitter-19436.appspot.com",
+        messagingSenderId: "1089970872567",
+        appId: "1:1089970872567:web:30396cfe1f2e05893a73f2",
+        measurementId: "G-G6BFZ76B52"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const messaging=firebase.messaging();
+
+    function IntitalizeFireBaseMessaging() {
+        messaging
+            .requestPermission()
+            .then(function () {
+                console.log("Notification Permission");
+                return messaging.getToken();
+            })
+            .then(function (token) {
+                console.log("Token : "+token);
+                document.getElementById("token").innerHTML=token;
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    messaging.onMessage(function (payload) {
+        console.log(payload);
+        const notificationOption={
+            body:payload.notification.body,
+            icon:payload.notification.icon
         };
-    </script>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="PWA Example">
-    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
-    <meta name="msapplication-TileImage" content="./images/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-</head>
-<body>
-    <nav>
-        <a href='index.html' class='selected'>Home</a>
-        <a href='profile.html'>Profile</a>
-    </nav>
-    <main>
-        Hi there, this is the content area.
-    </main>
-</body>
-<script src="app.js"></script>
+
+        if(Notification.permission==="granted"){
+            var notification=new Notification(payload.notification.title,notificationOption);
+
+            notification.onclick=function (ev) {
+                ev.preventDefault();
+                window.open(payload.notification.click_action,'_blank');
+                notification.close();
+            }
+        }
+
+    });
+    messaging.onTokenRefresh(function () {
+        messaging.getToken()
+            .then(function (newtoken) {
+                console.log("New Token : "+ newtoken);
+            })
+            .catch(function (reason) {
+                console.log(reason);
+            })
+    })
+    IntitalizeFireBaseMessaging();
+  </script>
+  <script src="main.js"></script>
+  </body>
 </html>
