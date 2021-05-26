@@ -2,7 +2,6 @@ const feed = document.querySelector('main');
 
 const button = document.getElementById('publish')
 
-
 button.addEventListener("click", publish);
 
 async function publish() {
@@ -50,11 +49,15 @@ window.addEventListener('online', () => updatePweets());
 
 async function updatePweets() {
   feed.innerHTML = '';
-  const response = await fetch('https://pwitter-19436-default-rtdb.firebaseio.com/');
-  const json = await response.json();
-  console.log(json);
-  // feed.innerHTML =
-  //   json.pweets.map(createPweet).join('\n');
+  fetch('https://pwitter-19436-default-rtdb.firebaseio.com/pweets.json', {
+      'mode': 'cors',
+      'headers': {
+      'Access-Control-Allow-Origin': '*',
+       }
+     }).then((res) => res.json().then((data) => {
+        console.log(data);
+        feed.innerHTML = data.map(createPweet).join('\n');
+    }));
 }
 
 function createPweet(pweet) {
